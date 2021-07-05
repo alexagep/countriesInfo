@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx-0L1iCo-zLYcF-fcR0kcV69b9QaG6oQ" type="text/javascript"></script>
+</head>
+<body>
+
+    <div class="header">
+        <span id="headerText">LEARNING HOW TO WORK WITH APIs</span>
+        <select id="dropDown"></select>
+    </div>
+    <div id="myDiv1">
+        <div class="information">
+            <div class="detailsInfo">
+                <span id="countryName"></span>
+                <div class="detailsInfo2">
+                    <div><span class="yellow">Native Name:</span><span id="nativeName"></span></div>
+                    <div><span class="yellow">Capital:</span><span id="capital">capital:</span></div>
+                    <div><span class="yellow">Region:</span><span id="region">region:</span></div>
+                    <div><span class="yellow">Population:</span><span id="population">population:</span></div>
+                    <div><span class="yellow">Language:</span><span id="language"></span></div>
+                    <div><span class="yellow">Timezone:</span><span id="timezones">timezones:</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="callingCode">
+            <div id="divInside">
+                <span id="textInside">CALLING CODE</span>
+            </div>
+            <div class="codeClass">
+                <span id="codeInside"></span>
+            </div>
+        </div>
+        <div class="flag">
+        </div>
+    </div>
+    <div id="myDiv2">
+        <div class="capitalWeather">
+            <div id="divInside2">
+                <span id="textInside2">CAPITAL WEATHER REPORT</span>
+                <span id="weatherInfo"></span>
+            </div>
+            <div class="detailsWeather">
+                <div class="iconPlace"><img src="" id="weatherIcon"></div>
+                <div class="currentW"><span id="currentWeather"></span></div>
+                <div class="testWea">
+                    <div><span class="blackgreen">Wind Speed:</span><span id="WindSpeed"></span></div>
+                    <div><span class="blackgreen">Temperature:</span><span id="Temperature">Temperature:</span></div>
+                    <div><span class="blackgreen">Humidity:</span><span id="Humidity">Humidity:</span></div>
+                    <div><span class="blackgreen">Visibility:</span><span id="Visibility">Visibility:</span></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="gMap" class="googleMap"></div>
+    </div>
+    
+    
+</body>
+<script src="main.js"></script>
+</html>
