@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/tableStyle.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>mobileNum</th>
+                <th>email</th>
+                <th>address</th>
+            </tr>
+        </thead>
+        <tbody >
+            <% for(const info of customers){  %>
+            
+                <tr>
+                    <form>
+                        <td ><%= info.Id %> <input type="hidden" class="rowID" name="id" value="<%= info.Id %>"></td>
+                        <td ><input type="text" name="firstName" class="firstName" value="<%= info.firstName %>"></td>
+                        <td ><input type="text" name="lastName" class="lastName" value="<%= info.lastName %>"></td>
+                        <td ><input type="text" name="mobileNum" class="mobileNum" value="<%= info.mobileNum %>"></td>
+                        <td ><input type="text" name="email" class="email" value="<%= info.email %>"></td>
+                        <td><input type="text" name="address" class="address" value="<%= info.address %>"></td>
+                    
+                        <td><button type="button" class="btn btn-primary updateBtn">Update</button></td>
+                        <td><button type="button" class="btn btn-warning deleteBtn">Delete</button></td>
+                    </form>
+                    </tr>
+                <% } %> 
+                <tr>
+                    <form>
+                        <td ></td>
+                        <td ><input type="text" name="firstName" class="firstName" value=""></td>
+                        <td ><input type="text" name="lastName" class="lastName" value=""></td>
+                        <td ><input type="text" name="mobileNum" class="mobileNum" value=""></td>
+                        <td ><input type="text" name="email" class="email" value=""></td>
+                        <td><input type="text" name="address" class="address" value=""></td>
+                    
+                        <td><button type="button" class="btn btn-primary createBtn">Create</button></td>
+                    </form>
+                    </tr>
+            <!-- table body -->
+        </tbody>
+    </table>
+
+    <script>
+        // When the user clicks on <span> (x), close the modal
+        let span = document.getElementsByClassName("close")[0];
+        $(".deleteBtn").click(function(){
+            let id =$(this).parent().parent().find(".rowID")[0].value;
+            $.ajax({
+                url: "allCustomers",
+                method: "DELETE",
+                data: { id },
+                success: function(response){
+                    alert(response);
+                    location.reload();
+                }
+            });
+        });
+        $(".updateBtn").click(function(){
+            console.log($(this).parent().parent().find(".rowID")[0].value);
+            let id =$(this).parent().parent().find(".rowID")[0].value;
+            $.ajax({
+                url: "allCustomers",
+                method: "PUT",
+                data: { 
+                    id:id,
+                    firstName:$(this).parent().parent().find(".firstName")[0].value,
+                    lastName:$(this).parent().parent().find(".lastName")[0].value,
+                    email:$(this).parent().parent().find(".email")[0].value,
+                    address:$(this).parent().parent().find(".address")[0].value,
+                    mobileNum:$(this).parent().parent().find(".mobileNum")[0].value,
+             },
+                success: function(response){
+                    alert(response);
+                    location.reload();
+                }
+            });
+        });
+        $(".createBtn").click(function(){
+            $.ajax({
+                url: "allCustomers",
+                method: "POST",
+                data: { 
+                    firstName:$(this).parent().parent().find(".firstName")[0].value,
+                    lastName:$(this).parent().parent().find(".lastName")[0].value,
+                    email:$(this).parent().parent().find(".email")[0].value,
+                    address:$(this).parent().parent().find(".address")[0].value,
+                    mobileNum:$(this).parent().parent().find(".mobileNum")[0].value,
+             },
+                success: function(response){
+                    alert(response);
+                    location.reload();
+                }
+            });
+        });
+      
+        
+    </script>
+    
+</body>
+
+</html>
